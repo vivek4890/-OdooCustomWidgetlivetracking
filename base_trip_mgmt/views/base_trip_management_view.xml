@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- Form view for object base.sd.trip-->
+		<record id="base_sd_trip_view_form" model="ir.ui.view">
+			<field name="name">base.sd.trip.form</field>
+			<field name="model">base.sd.trip</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="SD Trip">
+					<header>
+						<field name="state" widget="statusbar" statusbar_visible ='draft,planned,loaded,inprogress,done,cancelled' />
+						<button name="create_trip_stock" type="object" string="PLAN" class="oe_highlight" attrs="{'invisible': [('check_plan_click', '=', True)]}"/>
+						<button name="update_trip_stock" type="object" string="UPDATE" class="oe_highlight" attrs="{'invisible': [('check_update_click', '=', False)]}"/>
+					</header>
+					<sheet>
+						<group>
+							<group>
+								<field name="vehicle_id"/>
+								<field name="model_id" attrs="{'required':[('vehicle_id', '!=', False)],'readonly': [('vehicle_id', '=', False)]}"/>
+								<field name="driver_name"/>	
+							</group>
+							<group>
+								<field name="scheduled_date"/>
+								<field name="vehicle_num" attrs="{'required':[('vehicle_id', '!=', False)],'readonly': [('vehicle_id', '=', False)]}"/>
+								<field name="check_plan_click" invisible="1"/>
+								<field name="check_update_click" invisible="1"/>
+							</group>
+							<h2>Trip Stock Details</h2>
+							<field name="stock_ids" readonly="1">
+								<tree>
+									<field name="product_id"/>
+									<field name="loaded_stock"/>
+									<field name="required_stock"/>
+									<field name="delivered_stock"/>
+								</tree>
+							</field>
+							<h2>Vehicle Trip</h2>
+							<field name="trip_ids">
+								<tree>
+									<field name="sequence"/>
+									<field name="shop_id" domain="[('type','=','shop')]"/>
+									<field name="stock_location_id"/>
+								</tree>
+							</field>
+						</group>
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" />
+						<field name="message_ids" widget="mail_thread" />
+					</div>
+				</form>
+			</field>
+		</record>
+
+		<!-- Tree view for object base.sd.trip-->
+		<record id="base_sd_trip_view_tree" model="ir.ui.view">
+			<field name="name">base.sd.trip.view.tree</field>
+			<field name="model">base.sd.trip</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="SD Trip">
+					<field name="vehicle_id"/>
+					<field name="model_id"/>
+					<field name="vehicle_num"/>
+					<field name="driver_name"/>
+					<field name="scheduled_date"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- Search view for object base.sd.trip-->
+		<record id="base_sd_trip_search" model="ir.ui.view">
+			<field name="name">base.sd.trip.view.search</field>
+			<field name="model">base.sd.trip</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="model_id"/>
+					<field name="scheduled_date"/>
+					<field name="vehicle_id"/>
+					<field name="vehicle_num"/>
+					<field name="driver_name"/>
+				</search>
+			</field>
+		</record>
+
+		<!-- Action for object base.sd.trip-->
+		<record id="action_base_sd_trip" model="ir.actions.act_window">
+			<field name="name">SD Trip</field>
+			<field name="res_model">base.sd.trip</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<!-- Form view for object base.trip -->
+		<record id="base_trip_view_form" model="ir.ui.view">
+			<field name="name">base.trip.view.form</field>
+			<field name="model">base.trip</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Base Trip">
+					<header>
+						<field name="state" widget="statusbar" statusbar_visible ='planned,inprogress,completed,cancelled'/>
+					</header>
+					<sheet>
+						<group>
+							<group>
+								<field name="sequence" required="1"/>
+								<field name="shop_id" required="1"  domain="[('type','=','shop')]"/> 
+								<field name="stock_location_id"/>
+							</group>
+						</group>
+						<h2>Shop Stock Details</h2>
+						<group>
+							<field name="shop_stock_details_ids" nolabel="1">
+								<tree>
+									<field name="product_id"/>
+									<field name="required_qty"/>
+									<field name="delivered_qty"/>
+								</tree>
+							</field>
+						</group>
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" />
+						<field name="message_ids" widget="mail_thread" />
+					</div>
+				</form>
+			</field>
+		</record>
+
+		<!-- Tree view for object base.trip-->
+		<record id="base_trip_view_tree" model="ir.ui.view">
+			<field name="name">base.trip.view.tree</field>
+			<field name="model">base.trip</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Base Trip">
+					<field name="sequence"/>
+					<field name="shop_id"/>
+					<field name="stock_location_id"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- Search view for object base.trip-->
+		<record id="base_trip_search" model="ir.ui.view">
+			<field name="name">base.trip.view.search</field>
+			<field name="model">base.trip</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="sequence"/>
+					<field name="shop_id"/>
+					<field name="stock_location_id"/>
+				</search>
+			</field>
+		</record>
+
+		<!-- Action for object base.trip-->
+		<record id="action_base_trip" model="ir.actions.act_window">
+			<field name="name">Base Trip</field>
+			<field name="res_model">base.trip</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<!-- Form view for object base.shop.stock.details-->
+		<record id="base_shop_stock_details_view_form" model="ir.ui.view">
+			<field name="name">base.shop.stock.details.form</field>
+			<field name="model">base.shop.stock.details</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Base Shop Stock Details">
+					<sheet>
+						<group>
+							<group>
+								<field name="product_id" required="1"/>
+								<field name="required_qty"/>
+								<field name="delivered_qty"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- Tree view for object base.shop.stock.details-->
+		<record id="base_shop_stock_details_view_tree" model="ir.ui.view">
+			<field name="name">base.shop.stock.details.view.tree</field>
+			<field name="model">base.shop.stock.details</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Base Shop Stock Details">
+					<field name="product_id"/>
+					<field name="required_qty"/>
+					<field name="delivered_qty"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- Search view for object base.shop.stock.details-->
+		<record id="base_shop_stock_details_search" model="ir.ui.view">
+			<field name="name">base.shop.stock.details.view.search</field>
+			<field name="model">base.shop.stock.details</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="product_id"/>
+					<field name="required_qty"/>
+					<field name="delivered_qty"/>
+				</search>
+			</field>
+		</record>
+
+		<!-- Action for object base.shop.stock.details-->
+		<record id="action_base_shop_stock_details" model="ir.actions.act_window">
+			<field name="name">Base Shop Stock Details</field>
+			<field name="res_model">base.shop.stock.details</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<!-- Form view for object base.trip.stock.details-->
+		<record id="base_trip_stock_details_view_form" model="ir.ui.view">
+			<field name="name">base.trip.stock.details.form</field>
+			<field name="model">base.trip.stock.details</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Base Shop Stock Details">
+					<sheet>
+						<group>
+							<group>
+								<field name="product_id" required="1"/>
+								<field name="loaded_stock"/>
+								<field name="required_stock" readonly="1"/>
+								<field name="delivered_stock" readonly="1"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- Tree view for object base.trip.stock.details-->
+		<record id="base_trip_stock_details_view_tree" model="ir.ui.view">
+			<field name="name">base.trip.stock.details.view.tree</field>
+			<field name="model">base.trip.stock.details</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Base Shop Stock Details">
+					<field name="product_id" required="1"/>
+					<field name="loaded_stock"/>
+					<field name="required_stock"/>
+					<field name="delivered_stock"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- Search view for object base.trip.stock.details-->
+		<record id="base_trip_stock_details_search" model="ir.ui.view">
+			<field name="name">base.trip.stock.details.view.search</field>
+			<field name="model">base.trip.stock.details</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="product_id" required="1"/>
+					<field name="loaded_stock"/>
+					<field name="required_stock"/>
+					<field name="delivered_stock"/>
+				</search>
+			</field>
+		</record>
+
+		<!-- Action for object base.trip.stock.details-->
+		<record id="action_base_trip_stock_etails" model="ir.actions.act_window">
+			<field name="name">Base Trip Stock Details</field>
+			<field name="res_model">base.trip.stock.details</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<!-- Sub menu for all config object -->
+		<menuitem name="SD Trip" action="action_base_sd_trip" id="menu_base_sd_trip" parent="fleet.fleet_configuration" groups="base.group_no_one"/>
+		<!--<menuitem name="Base Trip" action="action_base_trip" id="menu_base_trip" parent="account.menu_finance_configuration" groups="base.group_no_one"/>-->
+
+	</data>
+</odoo>

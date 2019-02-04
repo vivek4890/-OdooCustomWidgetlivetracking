@@ -1,0 +1,339 @@
+/*.trips_section::-webkit-scrollbar {
+    width: 0.4em;
+}
+ 
+.trips_section::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
+}
+ 
+.trips_section::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+  border-radius: 6px;
+}
+*/
+.container-fluid{
+	height: 100%;
+}
+.box-model {
+    border: 2px solid #875a7c;
+    font-size: 16px;
+    margin: 20px 0 10px;
+    padding: 12px;
+    line-height: 0.7;
+    height: auto;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px;
+    display: inline-block;
+    width: 100%;
+}
+.box-model .form-control {
+    margin-bottom: 10px;
+    width: 100%;
+}
+.trips_section{
+	margin-top: 20%;
+	height: 70%;
+}
+.addFilter {
+    align-items: center;
+    justify-content: center;
+    background: #875a7c;
+    border-color: #875a7c;
+    border-radius: 3px;
+    width: 51px;
+    margin: auto;
+    float: none;
+}
+. 
+.trip_dt{
+	padding: 3% 3% 3% 3%;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 5%;
+}
+.trip_dtd{
+	padding: 3% 3% 3% 3%;
+	width: 100%;
+	text-align: center;
+	/*margin-left: 5% 5% 5% 5%;*/
+}
+.trips_section {
+    font-size: 16px;
+    text-align: left;
+    background: transparent;
+    padding: 7px;
+    margin: 10px 0;
+    border-radius: 4px;
+    box-shadow: none;
+    max-height: 376px;
+    overflow-y: auto;
+    border: 2px solid #875a7c;
+    box-shadow: 0 0 5px;
+}
+.trip_detail {
+    font-size: 16px;
+    text-align: left;
+    background: #fff;
+    padding: 8px;
+    margin: 80px 0 0;
+    border-radius: 0 0 0 4px;
+    box-shadow: 0 0 5px;
+    position: fixed;
+    right: -211px;
+    width: 196px;
+    top: 51px;
+}
+.trip_detail.active { 
+    right: 0;
+     
+}
+.select_op{
+	/*padding: 5px;*/
+	font-size: 16px;
+	border: none;
+	text-align: center;
+	/*text-indent:0px !important;*/
+	/*width:100%;*/
+}
+.select_op:hover, .select_op:focus{
+	box-shadow: 0 0 10px 100px #007fff inset;
+}
+.trip_animate{
+	width: 100%;
+	border: 1px solid black;
+	height: 50px;
+	/*padding: 0px 20px 0px 20px;*/
+	display: inline-block;
+  	margin-bottom: 30px;
+  	overflow: hidden;
+	white-space: nowrap;
+	vertical-align: middle;
+
+	/*display: flex;*/
+}
+.dot {
+	border-radius: 50%;
+	display: inline-block;
+	background-color: black;
+	text-align: center;
+	/*margin-bottom: 0px;	*/
+	vertical-align:middle;
+	justify-content: center;
+	margin-top: 4px;
+	margin-left: 4px;
+}
+.line{
+    display: inline-block;
+    background-color: black;
+    justify-content: center;
+    vertical-align: middle;
+}
+hr{
+    vertical-align: middle;
+}
+.btn-secondary:focus, .btn-secondary.focus {
+    box-shadow: none;
+}
+.arrow_btn {
+    font-size: 24px;
+    width: 30px;
+    height: 37px;
+    color: #656565;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.arrow_btn:hover{
+	background-color: white;
+}
+.btn-secondary:hover {
+    color: #212529;
+    background-color: #fff;
+    border-color: #fff;
+}
+/*.animation{
+	position: absolute;
+}*/
+.trip_info {
+    height: 100%;
+    position: fixed;
+    top: 45px;
+    left: -378px;
+    width: 600px;
+    z-index: 9;
+    background: #fff;
+ }
+.p0{padding: 0}
+.trip_info.active { 
+    left: 0px;
+     
+}
+
+.trip_details {
+    position: fixed;
+    right: 0;
+    top: 80px;
+    width: 290px;
+}
+ 
+/*option{
+	text-align: center;
+}*/
+
+.trip_details .tag  {
+   background: #fff;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 0;
+    color: #333;
+    font-weight: normal;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+}
+  .trips_section .tag {
+    background: #fff;
+    padding: 10px;
+    border: solid 1px #b5b5b5;
+    border-radius: 4px;
+    color: #333;
+    font-weight: normal;
+    text-align: left;
+    width: 100%;
+    box-shadow: 0 0 4px #ccc;
+    margin-bottom: 9px;
+}
+.trip_detail h2, .trips_section h2 {
+    font-size: 15px;
+    text-align: left !important;
+    padding: 0 7px;
+    color: #875a7c;
+}
+h3.text-left {
+    color: #875a7c;
+}
+
+.map_section {
+    height: 100%;
+    padding: 0;
+ }
+ .o_content{overflow: hidden !important;}
+
+.dummy-map {
+    /*background: #ddd;*/
+    width: 100%;
+    height: 97vh;
+}
+ 
+.step-box .trip_animate {
+    border: none;
+    background: #fff;
+    height: 49px;
+}
+.step-box  .mid_animate {
+    padding: 0;
+}
+.step-box .right_animate {
+    padding: 0;
+}
+.step-box .mid_animate {
+    display: flex;
+    margin: auto;
+    box-shadow: 0 0 10px;
+    height: 47px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    margin-left: -490px;
+}
+i.fas.fa-long-arrow-alt-right {
+    font-size: 30px;
+    position: relative;
+    top: 9px;
+    width: 40px;
+    text-align: center;
+}
+/*.es-input{
+	text-align: left; 
+}*/
+.icon{
+	font-size: 16px;
+}
+ 
+i.fa.fa-truck {
+    color: #875a7c;
+}
+.box-model select.form-control{
+    background-image: url(https://saw-olegacy-qa.sofodev.co/data/icons/arrow-down.png);
+    background-size: 11px;
+    background-position: center right 7px;
+}
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #875a7c;
+    outline: 0;
+    box-shadow: transparent;
+}
+.click-btn {
+    position: fixed;
+    left: 0px;
+    background: #875a7c;
+    padding: 10px;
+    top: 50%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    width: 50px;
+    justify-content: center;
+    color: #fff;
+    border-radius: 0 4px 4px 0;
+}
+.click-btn.active {
+     left: 253px;
+    }
+.click-btn2 {
+    position: fixed;
+    right: 0px;
+    background: #875a7c;
+    padding: 10px;
+    top: 138px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    width: 46px;
+    justify-content: center;
+    color: #fff;
+    border-radius: 4px 0 0 5px;
+    z-index: 99;
+}
+.click-btn2.active {
+  
+    right: 196px;
+}
+.click-btn i, .click-btn2 i {
+    border: solid 2px #fff;
+    padding: 9px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.click-btn i.fa-arrow-left, .click-btn.active i.fa-arrow-right{display:none}
+.click-btn.active i.fa-arrow-left{display:block}
+ 
+
+.click-btn2 i.fa-arrow-left, .click-btn2.active i.fa-arrow-right{display:block}
+.click-btn2.active i.fa-arrow-left, .click-btn2 i.fa-arrow-right{display:none}
+.icons{
+    float: right;
+    padding-left: 45px;
+}
+.filter-heading{
+    float: left;
+}
+.filter-top{
+    width: 100% !important;
+    display: flex !important;
+    align-items: baseline;
+}

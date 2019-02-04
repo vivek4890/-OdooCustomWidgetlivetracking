@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates xml:space="preserve">
+    <!-- <t t-extend="ControlPanel"></t> -->
+    <t t-name="HomePageTemplate">
+        <div class="container-fluid ">
+            <div class="row main">
+                <div class="col-md-2 trip_info">
+                    <div class="click-btn"><i class="fa fa-arrow-right"></i><i class="fa fa-arrow-left" ></i></div>
+                    <div class='filter_section box-model'>
+                        <div class="filter-top">
+                            <h3 class="text-left filter-heading">Filters </h3>
+                            <div class="icons" dir="rtl"></div>
+                        </div>
+                        <div class="filter-box">
+                            <input class="form-control" id="datepicker" name="daterange" placeholder="YYYY/ MM/DD - YYYY/MM/DD" type="text" value=""/>
+                            <select class="form-control" id="vechiles_name">
+                                <option class="select_op" value=''>Vechile Number</option>
+                                <t t-foreach="vechile_data" t-as="vechile_name">
+                                    <option class="form-control select_op" t-attf-value="{{vechile_name['number']}}">
+                                        <t t-esc="vechile_name['number']"/>
+                                    </option>
+                                </t>
+                                <!--  <option class="form-control select_op "><button class="btn btn-primary btn-sm pull-left search_more" type="button">Search More</button></option> -->
+                            </select>
+                            <select class="form-control" id="trips_name">
+                                <option class="select_op" value=''>Trip Name</option>
+                                <t t-foreach="tr_data" t-as="trip_name">
+                                    <option class="form-control select_op" t-attf-value="{{trip_name['id']}}">
+                                       <t t-esc="trip_name['id']" />
+                                    </option>
+                                </t>
+                                <!--  <option class="form-control select_op "><button class="btn btn-primary btn-sm pull-left search_more" type="button">Search More</button></option> -->
+                            </select>
+                           
+                            <select class="form-control" id="driv_name">
+                                <option class="select_op" value=''>Driver Name</option>
+                                <t t-foreach="driver_data" t-as="d_data">
+                                    <option class="form-control select_op" t-attf-value="{{d_data['name']}}">
+                                        <t t-esc="d_data['name']" />
+                                    </option>
+                                </t>
+                                <!-- <option class="form-control select_op "><button class="btn btn-primary btn-sm pull-left search_more" type="button">Search More</button></option> -->
+                            </select>
+                            <div class="text-left">
+                                <button class="btn btn-primary btn-sm pull-left addFilter" type="button">Apply</button>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="trips_section ">
+<!--                         <h3 class="text-left">Trips</h3>
+ -->                        <div class="trips_data">
+                            <t t-foreach="tr_data" t-as="trip_data">
+                                <div id="trips">
+                                    <span class="tag badge trip_dt" t-attf-id="{{ trip_data['id'] }}"><i class="fa fa-truck "></i> Trip: <t t-esc="trip_data['id']"/></span>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 map_section p0">
+                    <div class="dummy-map" id="map"></div>
+                    <div class='row animation step-box'>
+                        <div class="col-md-8 mid_animate">
+                            <div class="left_animate"></div>
+                            <div class="trip_animate"></div>
+                            <div class="right_animate"></div>
+                        </div>
+                        <!-- <div class="col-md-2"></div>      -->
+                    </div>
+                </div>
+
+                <div class="col-md-2 trip_details">
+                    <div class="click-btn2"><i class="fa fa-arrow-right right-arrow-2"></i><i class="fa fa-arrow-left left-arrow-2"></i></div>
+                
+                    <div class="trip_detail">
+                        <h2 class="">Trip Details</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function() {
+                if($('.trip_dt').length >0){
+                    $('span.trip_dt')[0].click();
+                    $('.click-btn2').addClass('active');
+                    $('.trip_detail').addClass('active');
+
+                }
+                <!-- $("span.trip_dt").on('click', function () {
+                   $('.click-btn2').click();
+                });  -->
+                $('#datepicker').daterangepicker({
+                    autoUpdateInput: false,
+                    locale: {
+                        cancelLabel: 'Clear'
+                    }
+                })
+
+                $('#datepicker').on('apply.daterangepicker', function(ev, picker) {
+                    $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+                });
+
+                $('#datepicker').on('cancel.daterangepicker', function(ev, picker) {
+                    $(this).val('');
+                });
+               <!--  $("#vechiles_name").editableSelect();
+                $("#trips_name").editableSelect();
+                $("#driv_name").editableSelect(); -->
+                $(".click-btn").on('click', function () {
+                   $(".trip_info").toggleClass("active", 200);
+                   $(this).toggleClass("active",200);
+                }); 
+
+                $(".click-btn2").on('click', function () {
+                   $(".trip_detail").toggleClass("active", 200);
+                   $(this).toggleClass("active",200);
+                }); 
+               
+            });
+        </script>
+    </t>
+
+</templates>

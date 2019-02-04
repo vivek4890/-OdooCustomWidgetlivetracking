@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<template id="assets_backend" name="Base Live Tracking" inherit_id="web.assets_backend" active="True">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0z-o-oXnQqKbaSnZNbGOUCSv-6lo4c5w"></script>
+                <script type="text/javascript" src="/base_trip_mgmt/static/src/js/page.js"/>
+                <link href="https://rawgit.com/indrimuska/jquery-editable-select/master/dist/jquery-editable-select.min.css" rel="stylesheet"/>
+				<script type="text/javascript" src="https://rawgit.com/indrimuska/jquery-editable-select/master/dist/jquery-editable-select.min.js"></script>
+                <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+				<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+				<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"/>
+                <link rel="stylesheet" href="/base_trip_mgmt/static/src/css/page.css"/>
+            </xpath>
+        </template>
+
+		<menuitem id="base_tracking_page" name="Base Live Tracking" />
+
+        <menuitem id="base_menu_tracking_page" name="Base Tracking"
+            parent="base_tracking_page" />
+
+        <record id="action_tracking_home_page" model="ir.actions.client">
+            <field name="name">Base Live Tracking Home</field>
+            <field name="tag">page_live</field>
+            <field name="target">current</field>
+        </record>
+
+        <menuitem id="home_page_live_traking_menu" name="Home Page" parent="base_menu_tracking_page"
+            action="action_tracking_home_page"/>
+
+    </data>
+</odoo>
